@@ -50,10 +50,10 @@
 </head>
 
 <body>
-
+<b>Enter  Name : </b> <input type="text" id="username"/>
     <h2>Tabs</h2>
     <p>Click on the buttons inside the tabbed menu:</p>
-
+    <h5 id="show-score"></h5>
     <div class="tab">
         <button class="tablinks" onclick="openQuiz(event, 'quiz1')">quiz1</button>
         <button class="tablinks" onclick="openQuiz(event, 'quiz2')">quiz2</button>
@@ -156,9 +156,7 @@
         }
         function quiz1Submit() {
 
-            console.log("user", quiz1_current_user_ans, quiz1_current_user_ans.length)
-            console.log("actual", quiz1_current_actual_ans, quiz1_current_actual_ans.length)
-            console.log("actualchkbx", quiz1_array_count, quiz1_res[quiz1_array_count].type)
+           var uname=  document.getElementById("username").value
 
 
             if (quiz1_res[quiz1_array_count].type == "checkboxes") {
@@ -205,11 +203,11 @@
 
                 var percent= (right_answers * 100)/20
                 if(percent > 80){
-                    alert("Congratulations <student name>! You pass the quiz")
+                    alert('Congratulations '+uname+'! You pass the quiz')
                     // $("#quiz1_q").append('<h1> Congratulations <student name>! You pass the quiz</h1>')
                 }else{
                     alert(" Sorry <Student Name>, you fail the quiz")
-                    $("#quiz1_q").append('<h1> Sorry <Student Name>, you fail the quiz</h1>')
+                    $("#quiz1_q").append('<h1> Sorry '+uname+', you fail the quiz</h1>')
 
                     
                 }
@@ -217,7 +215,7 @@
             }
             question_count = question_count + 1;
             quiz1_array_count = quiz1_array_count + 1;
-
+          document.getElementById("show-score").innerHTML= "Your score "+ uname +"  : "+right_answers
 
         }
         function gotExplanation() {

@@ -8,11 +8,50 @@
             font-family: Arial;
         }
 
+        h1{
+            font-weight: 300;
+            margin: 0px;
+            padding: 10px;
+            font-size: 20px;
+            background-color: #b3daff;
+            color: #fff;
+            text-align: center;
+        }
+
+        h3{
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        h5, p{
+            font-size: medium;
+            text-align: center;
+        }
+
+        /* Style the choices */
+        #quiz1_q {
+            margin-bottom: 10px;
+            text-align: left;
+            display: inline-block;
+        }
+
+        /* Style the submit buttomn */
+        #submit-btn {
+	        font-size: 15px;
+	        background-color: #99ceff;
+	        color: #fff;
+	        border: 0px;
+	        border-radius: 3px;
+	        padding: 10px;
+	        cursor: pointer;
+            margin-top: 20px;
+        }
+
         /* Style the tab */
         .tab {
             overflow: hidden;
             border: 1px solid #ccc;
-            background-color: #f1f1f1;
+            background-color: #b3daff;
         }
 
         /* Style the buttons inside the tab */
@@ -29,12 +68,12 @@
 
         /* Change background color of buttons on hover */
         .tab button:hover {
-            background-color: #ddd;
+            background-color: #99ceff;
         }
 
         /* Create an active/current tablink class */
         .tab button.active {
-            background-color: #ccc;
+            background-color:#99ceff;
         }
 
         /* Style the tab content */
@@ -50,13 +89,13 @@
 </head>
 
 <body>
-<b>Enter  Name : </b> <input type="text" id="username"/>
-    <h2>Tabs</h2>
-    <p>Click on the buttons inside the tabbed menu:</p>
+    <h1><b>Computer Science Quiz</b></h1>
+    <h5><b>Enter  Name : </b> <input type="text" id="username"/></h5>
+    <p>Click on a quiz inside the tabbed menu:</p>
     <h5 id="show-score"></h5>
     <div class="tab">
-        <button class="tablinks" onclick="openQuiz(event, 'quiz1')">quiz1</button>
-        <button class="tablinks" onclick="openQuiz(event, 'quiz2')">quiz2</button>
+        <button class="tablinks" onclick="openQuiz(event, 'quiz1')">Computer Fundementals</button>
+        <button class="tablinks" onclick="openQuiz(event, 'quiz2')">Programming</button>
     </div>
 
     <div id="quiz1" class="tabcontent">
@@ -182,7 +221,7 @@
                     setTimeout(showQuiz1, 1000);
                 }
                 else {
-                    $("#quiz1_q").append('<br/> <h5>' + quiz1_current_explanation + '</h5>   <input type="submit" onclick="gotExplanation()" value="Go It!">')
+                    $("#quiz1_q").append('<br/> <h5>' + quiz1_current_explanation + '</h5>   <input type="submit" onclick="gotExplanation()" value="Got It!">')
                 }
 
 
@@ -194,7 +233,7 @@
                     setTimeout(showQuiz1, 1000);
                     right_answers=right_answers+1;
                 } else {
-                    $("#quiz1_q").append('<br/> <h5>' + quiz1_current_explanation + '</h5>   <input type="submit" onclick="gotExplanation()" value="Go It!">')
+                    $("#quiz1_q").append('<br/> <h5>' + quiz1_current_explanation + '</h5>   <input type="submit" onclick="gotExplanation()" value="Got It!">')
                 }
             }
             if(question_count == 20){
@@ -206,7 +245,7 @@
                     alert('Congratulations '+uname+'! You pass the quiz')
                     // $("#quiz1_q").append('<h1> Congratulations <student name>! You pass the quiz</h1>')
                 }else{
-                    alert(" Sorry <Student Name>, you fail the quiz")
+                    alert('Sorry '+uname+', You failed the quiz')
                     $("#quiz1_q").append('<h1> Sorry '+uname+', you fail the quiz</h1>')
 
                     

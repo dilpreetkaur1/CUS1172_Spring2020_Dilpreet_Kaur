@@ -8,7 +8,7 @@
             font-family: Arial;
         }
 
-        h1{
+        h2{
             font-weight: 300;
             margin: 0px;
             padding: 10px;
@@ -104,7 +104,7 @@
 </head>
 
 <body>
-    <h1><b>Computer Science Quiz</b></h1>
+    <h2><b>Computer Science Quiz</b></h2>
     <h5><b>Enter  Name : </b> <input type="text" class="form__field" id="username"/></h5>
     <p>Click on a quiz inside the tabbed menu:</p>
     <h5 id="show-score"></h5>
@@ -230,13 +230,13 @@
                 // console.log("actualchkbx", quiz1_current_actual_chkbox_ans, chkbox_ans_arr)
                 // console.log("here we go",_.isEqual(quiz1_current_actual_chkbox_ans, chkbox_ans_arr));
                 if (quiz1_current_actual_chkbox_ans.sort().join(',') === chkbox_ans_arr.sort().join(',')) {
-                    $("#quiz1_q").append('<br/> <h5>Good Job !</h5>')
+                    $("#quiz1_q").append('<br/> <h4>Good Job !</h4>')
                     right_answers=right_answers+1;
 
                     setTimeout(showQuiz1, 1000);
                 }
                 else {
-                    $("#quiz1_q").append('<br/> <h5>' + quiz1_current_explanation + '</h5>   <input type="submit" onclick="gotExplanation()" value="Got It!">')
+                    $("#quiz1_q").append('<br/> <h4>' + quiz1_current_explanation + '</h4>   <input type="submit" onclick="gotExplanation()" value="Got It!">')
                 }
 
 
@@ -244,11 +244,11 @@
                
                 if (quiz1_current_user_ans == quiz1_current_actual_ans) {
                     // alert(1)
-                    $("#quiz1_q").append('<br/> <h5>Good Job !</h5>')
+                    $("#quiz1_q").append('<br/> <h4>Good Job !</h4>')
                     setTimeout(showQuiz1, 1000);
                     right_answers=right_answers+1;
                 } else {
-                    $("#quiz1_q").append('<br/> <h5>' + quiz1_current_explanation + '</h5>   <input type="submit" onclick="gotExplanation()" value="Got It!">')
+                    $("#quiz1_q").append('<br/> <h4>' + quiz1_current_explanation + '</h4>   <input type="submit" onclick="gotExplanation()" value="Got It!">')
                 }
             }
             if(question_count == 20){
@@ -261,7 +261,7 @@
                     // $("#quiz1_q").append('<h1> Congratulations <student name>! You pass the quiz</h1>')
                 }else{
                     alert('Sorry '+uname+', You failed the quiz')
-                    $("#quiz1_q").append('<h1> Sorry '+uname+', you fail the quiz</h1>')
+                    $("#quiz1_q").append('<h1> Sorry '+uname+', you failed the quiz</h1>')
 
                     
                 }

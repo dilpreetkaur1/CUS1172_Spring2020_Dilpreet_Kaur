@@ -1,10 +1,10 @@
-# CUS1172_Spring2020_Dilpreet_Kaur
+# Computer Science Take Quiz
 - Project 4: Individual Project (Milestone 1)
 - Course Number: CUS 1172 
 - Semester: Spring 2020
 - Full Name: Dilpreet Kaur
 
-## Project requirments 
+## Project Requirments 
 - Static REST API that serves all my data such as questions, choices, correct answer, and reasoning using the JSONPlaceholder service. 
 - Application loads all data from the fake API synchronous using network request.
 - Five different types of questions including multiple choice, short answer, true/false, checkbox, and fill in the blank. 

@@ -13,7 +13,7 @@
             margin: 0px;
             padding: 10px;
             font-size: 20px;
-            background-color: #b3daff;
+            background-color: #99ceff;
             color: #fff;
             text-align: center;
         }
@@ -28,6 +28,16 @@
             text-align: center;
         }
 
+         /* Style the name textbox */
+         .form__field {
+	        height: 20px;
+            position: relative;
+            border: 2px solid #cdcdcd;
+            border-color: rgba(0, 0, 0, .14);
+            background-color: AliceBlue;
+            font-size: 14px;
+        }
+
         /* Style the choices */
         #quiz1_q {
             margin-bottom: 10px;
@@ -35,7 +45,7 @@
             display: inline-block;
         }
 
-        /* Style the submit buttomn */
+        /* Style the submit button */
         #submit-btn {
 	        font-size: 15px;
 	        background-color: #99ceff;
@@ -47,11 +57,16 @@
             margin-top: 20px;
         }
         
+        /* Change background color of buttons on hover */
+        #submit-btn:hover{
+            background-color: #66b5ff;
+        }
+
         /* Style the tab */
         .tab {
             overflow: hidden;
             border: 1px solid #ccc;
-            background-color: #b3daff;
+            background-color: #99ceff;
         }
 
         /* Style the buttons inside the tab */
@@ -68,12 +83,12 @@
 
         /* Change background color of buttons on hover */
         .tab button:hover {
-            background-color: #99ceff;
+            background-color: #66b5ff;
         }
 
         /* Create an active/current tablink class */
         .tab button.active {
-            background-color:#99ceff;
+            background-color:#66b5ff;
         }
 
         /* Style the tab content */
@@ -85,13 +100,13 @@
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    
+
 </head>
 
 <body>
 
     <h1><b>Computer Science Quiz</b></h1>
-    <h5><b>Enter  Name : </b> <input type="text" id="username"/></h5>
+    <h5><b>Enter  Name : </b> <input type="text" class="form__field" id="username"/></h5>
     <p>Click on a quiz inside the tabbed menu:</p>
     <h5 id="show-score"></h5>
     <div class="tab">

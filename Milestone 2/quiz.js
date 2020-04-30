@@ -12,3 +12,6 @@ router.get('/', function(req, res){
 // route to ge quizzes list
 router.get('/api/quiz/list', function(req, res){
     //  quiz_list= [{"quiz1":quiz1.quiz1_id,"quiz2": quiz1.quiz2_id}];
+     res.json({"message":[{"quiz1":quiz1.quiz1_id,"quiz2": quiz1.quiz2_id}]})
+});
+

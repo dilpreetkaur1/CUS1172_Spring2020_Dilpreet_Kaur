@@ -29,3 +29,31 @@ router.get('/api/quiz/:id', function(req, res){
     }
 res.json({"message": data })
 });
+// route to get questions
+router.get('/api/quiz/', function(req, res){
+   console.log("questions")
+    const id=req.query.id
+    const q_id=req.query.questionid
+    var data;
+    if(id == "quiz1"){
+         data=quiz1.quiz1
+         for(var i=0; i < data.length; i++){
+             if(data[i].id == q_id){
+              return  res.json({"message": {"type":data[i].type,"question":data[i].question,"choices":data[i].choices,"meta": data[i].meta} })
+             }
+         }
+         return   res.json({"message":"Not found"})
+    }else{
+   console.log("questions else")
+
+        data=quiz1.quiz2
+         for(var i=0; i < data.length; i++){
+             if(data[i].id == q_id){
+              return  res.json({"message": {"type":data[i].type,"question":data[i].question,"choices":data[i].choices,"meta": data[i].meta} })
+             }
+         }
+         return   res.json({"message":"Not found"})  
+    }
+    
+         
+});

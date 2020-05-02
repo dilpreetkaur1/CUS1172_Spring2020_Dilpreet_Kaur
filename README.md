@@ -1,5 +1,5 @@
 # Computer Science Take Quiz
-- Project 4: Individual Project (Milestone 1)
+- Project 4: Individual Project (Milestone 1) & (Milestone 2)
 - Course Number: CUS 1172 
 - Semester: Spring 2020
 - Full Name: Dilpreet Kaur
@@ -9,7 +9,6 @@
 - Application loads all data from the fake API synchronous using network request.
 - Five different types of questions including multiple choice, short answer, true/false, checkbox, and fill in the blank. 
 - Two possible Computer Science related quizzes. Including real meaningful question and appropriate correct answer and illustrations.
-- Single-page application.
 - Implements all features specified in the use-case.
 - Application has been styled and is visually appealing.
 

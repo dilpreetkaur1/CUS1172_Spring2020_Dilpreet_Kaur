@@ -265,3 +265,4 @@ function openQuiz(evt, quizName) {
     document.getElementById(quizName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+

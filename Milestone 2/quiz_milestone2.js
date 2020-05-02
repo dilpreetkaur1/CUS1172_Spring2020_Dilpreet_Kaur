@@ -100,3 +100,161 @@ function displayQuestions(res) {
 
 
 }
+
+
+
+function getValue(val) {
+    quiz1_current_user_ans = val;
+}
+function quiz1Submit() {
+    var uname = document.getElementById("username").value
+    var url="";
+    if (quiz1_res[quiz1_array_count].type == "checkboxes") {
+        var chkbox_ans_arr = []
+        if (document.getElementById("chkBox1").checked) {
+            chkbox_ans_arr.push(document.getElementById("chkBox1").value)
+        }
+        if (document.getElementById("chkBox2").checked) {
+            chkbox_ans_arr.push(document.getElementById("chkBox2").value)
+        }
+        if (document.getElementById("chkBox3").checked) {
+            chkbox_ans_arr.push(document.getElementById("chkBox3").value)
+        }
+        if (document.getElementById("chkBox4").checked) {
+            chkbox_ans_arr.push(document.getElementById("chkBox4").value)
+        }
+       url="http://localhost:5000/quiz1/api/quiz_ans?id="+quiz_choice+"&questionid="+q_id+"&user_ans="+chkbox_ans_arr
+    }else{
+       url= "http://localhost:5000/quiz1/api/quiz_ans?id="+quiz_choice+"&questionid="+q_id+"&user_ans="+quiz1_current_user_ans
+    }
+
+    $.ajax({
+        // url: `http://localhost:5000/quiz1/api/quiz/${quiz_choice}/${q_id}`,
+        // api/check_answer/:quizid/:questionid/:answer’
+        url: url,
+
+        // "&uname="+name
+        method: "get",
+        contentType: "json/application",
+        dataType: 'json',
+        success: function (response) {
+            console.log("question api response", response)
+            if (quiz1_res[quiz1_array_count].type == "checkboxess") {
+        var chkbox_ans_arr = []
+        if (document.getElementById("chkBox1").checked) {
+            chkbox_ans_arr.push(document.getElementById("chkBox1").value)
+        }
+        if (document.getElementById("chkBox2").checked) {
+            chkbox_ans_arr.push(document.getElementById("chkBox2").value)
+        }
+        if (document.getElementById("chkBox3").checked) {
+            chkbox_ans_arr.push(document.getElementById("chkBox3").value)
+        }
+        if (document.getElementById("chkBox4").checked) {
+            chkbox_ans_arr.push(document.getElementById("chkBox4").value)
+        }
+        // console.log("actualchkbx", quiz1_current_actual_chkbox_ans, chkbox_ans_arr)
+        // console.log("here we go",_.isEqual(quiz1_current_actual_chkbox_ans, chkbox_ans_arr));
+       
+       
+        if (quiz1_current_actual_chkbox_ans.sort().join(',') === chkbox_ans_arr.sort().join(',')) {
+            $("#quiz1_q").append('<br/> <h4>Good Job !</h4>')
+            right_answers = right_answers + 1;
+
+            setTimeout(showQuiz1, 1000);
+        }
+        else {
+            $("#quiz1_q").append('<br/> <h4>' + quiz1_current_explanation + '</h4>   <input type="submit" onclick="gotExplanation()" value="Got It!">')
+        }
+
+
+    } else {
+
+        if (response.ans == 'true') {
+            // alert(1)
+            $("#quiz1_q").append('<br/> <h4>Good Job !</h4>')
+            setTimeout(showQuiz1, 1000);
+            right_answers = right_answers + 1;
+        } else {
+            quiz1_current_explanation= response.explanation;
+            $("#quiz1_q").append('<br/> <h4>' + quiz1_current_explanation + '</h4>   <input type="submit" onclick="gotExplanation()" value="Got It!">')
+        }
+    }
+    if (question_count == 20) {
+        document.getElementById("submit-btn").style.display = "none"
+        document.getElementById("quiz1_statement").style.display = "none"
+
+        var percent = (right_answers * 100) / 20
+        if (percent > 80) {
+            alert('Congratulations ' + uname + '! You pass the quiz')
+            //$("#quiz1_q").append('<h1> Congratulations' + uname+ 'You pass the quiz</h1>')
+        } else {
+            alert('Sorry ' + uname + ', You failed the quiz')
+            $("#quiz1_q").append('<h1> Sorry ' + uname + ', you failed the quiz</h1>')
+
+
+        }
+
+    }
+    question_count = question_count + 1;
+    quiz1_array_count = quiz1_array_count + 1;
+    document.getElementById("show-score").innerHTML = "Your score " + uname + "  : " + right_answers
+
+            
+        },
+        error: function (err) {
+            console.log("errors : ", err)
+        }
+    })
+    q_id= q_meta;
+}
+function gotExplanation() {
+    showQuiz1()
+
+}
+
+var showQuiz_count = 0;
+function openQuiz(evt, quizName) {
+
+    if (quizName == "quiz1") {
+        if (showQuiz_count == 0) {
+            // showQuiz1();
+            quiz_choice = choices[0].quiz2;
+
+            // /:"+quiz_choice
+
+            $.ajax({
+                url: `http://localhost:5000/quiz1/api/quiz/${quiz_choice}`,
+                method: "get",
+                contentType: "json/application",
+                dataType: 'json',
+                success: function (response) {
+                    console.log("api response", response)
+                    quiz1_res = response.message;
+                    showQuiz1();
+                },
+                error: function (err) {
+                    console.log("errors : ", err)
+                }
+            })
+
+        }
+        showQuiz_count = showQuiz_count + 1;
+    }
+    else if (quizName == "quiz2") {
+        window.location.href = "index_milestone2.html"
+        // showQuiz2();
+    }
+
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(quizName).style.display = "block";
+    evt.currentTarget.className += " active";
+}

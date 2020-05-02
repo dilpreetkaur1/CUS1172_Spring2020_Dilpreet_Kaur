@@ -1,5 +1,5 @@
 # Computer Science Take Quiz
-- Project 4: Individual Project (Milestone 1) & (Milestone 2)
+- Project 4: Individual Project (Milestone 1)
 - Course Number: CUS 1172 
 - Semester: Spring 2020
 - Full Name: Dilpreet Kaur

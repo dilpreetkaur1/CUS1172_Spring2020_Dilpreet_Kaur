@@ -12,7 +12,8 @@ router.get('/', function(req, res){
 // route to ge quizzes list
 router.get('/api/quiz/list', function(req, res){
     //  quiz_list= [{"quiz1":quiz1.quiz1_id,"quiz2": quiz1.quiz2_id}];
-     res.json({"message":[{"quiz1":quiz1.quiz1_id,"quiz2": quiz1.quiz2_id}]})
+
+res.json({"message":[{"quiz1":quiz1.quiz1_id,"quiz2": quiz1.quiz2_id}]})
 });
 // route to get quiz agains quiz id
 router.get('/api/quiz/:id', function(req, res){
@@ -29,6 +30,7 @@ router.get('/api/quiz/:id', function(req, res){
     }
 res.json({"message": data })
 });
+
 // route to get questions
 router.get('/api/quiz/', function(req, res){
    console.log("questions")
@@ -57,3 +59,48 @@ router.get('/api/quiz/', function(req, res){
     
          
 });
+// check answer
+router.get('/api/quiz_ans/', function(req, res){
+   
+    const id=req.query.id
+    const q_id=req.query.questionid
+    const user_ans=req.query.user_ans
+    
+console.log("user ans", q_id, req.query.user_ans, id)
+    var data;
+    if(id == "quiz1"){
+         data=quiz1.quiz1
+         for(var i=0; i < data.length; i++){
+             if(data[i].id == q_id ){
+                console.log("data")
+                if( data[i].answer == user_ans){
+                    return  res.json({"ans":"true", })
+                
+                   }else{
+                
+                    return  res.json({"ans":"false", "explanation": data[i].explanation})
+                    
+                   }
+             }
+         }
+    
+    }else{
+        data=quiz1.quiz2
+        for(var i=0; i < data.length; i++){
+            if(data[i].id == q_id ){
+               console.log("data")
+               if( data[i].answer == user_ans){
+                   return  res.json({"ans":"true", })
+               
+                  }else{
+               
+                   return  res.json({"ans":"false", "explanation": data[i].explanation})
+                   
+                  }
+            }
+        }
+    }
+    
+         
+});
+module.exports = router;

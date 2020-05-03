@@ -6,6 +6,6 @@ var cors = require('cors')
 app.use(cors()) 
 app.use('/quiz1', quiz1);
 const PORT = 5000;
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`)
 });

@@ -12,7 +12,7 @@ var q_id = 1;
 var q_meta=1;
 var choices;
 $.ajax({
-    url: "http://localhost:5000/quiz1/api/quiz/list",
+    url: "https://localhost:5000/quiz1/api/quiz/list",
 
     method: "get",
     contentType: "json/application",
@@ -35,8 +35,8 @@ if(q_meta != -1){
     $("#quiz1_q").empty()
 
     $.ajax({
-        // url: `http://localhost:5000/quiz1/api/quiz/${quiz_choice}/${q_id}`,
-        url: "http://localhost:5000/quiz1/api/quiz?id="+quiz_choice+"&questionid="+q_id,
+        // url: `https://localhost:5000/quiz1/api/quiz/${quiz_choice}/${q_id}`,
+        url: "https://localhost:5000/quiz1/api/quiz?id="+quiz_choice+"&questionid="+q_id,
 
         // "&uname="+name
         method: "get",
@@ -130,13 +130,13 @@ function quiz1Submit() {
         if (document.getElementById("chkBox4").checked) {
             chkbox_ans_arr.push(document.getElementById("chkBox4").value)
         }
-       url="http://localhost:5000/quiz1/api/quiz_ans?id="+quiz_choice+"&questionid="+q_id+"&user_ans="+chkbox_ans_arr
+       url="https://localhost:5000/quiz1/api/quiz_ans?id="+quiz_choice+"&questionid="+q_id+"&user_ans="+chkbox_ans_arr
     }else{
-       url= "http://localhost:5000/quiz1/api/quiz_ans?id="+quiz_choice+"&questionid="+q_id+"&user_ans="+quiz1_current_user_ans
+       url= "https://localhost:5000/quiz1/api/quiz_ans?id="+quiz_choice+"&questionid="+q_id+"&user_ans="+quiz1_current_user_ans
     }
 
     $.ajax({
-        // url: `http://localhost:5000/quiz1/api/quiz/${quiz_choice}/${q_id}`,
+        // url: `https://localhost:5000/quiz1/api/quiz/${quiz_choice}/${q_id}`,
         // api/check_answer/:quizid/:questionid/:answer’
         url: url,
 
@@ -231,7 +231,7 @@ function openQuiz(evt, quizName) {
             // /:"+quiz_choice
 
             $.ajax({
-                url: `http://localhost:5000/quiz1/api/quiz/${quiz_choice}`,
+                url: `https://localhost:5000/quiz1/api/quiz/${quiz_choice}`,
                 method: "get",
                 contentType: "json/application",
                 dataType: 'json',

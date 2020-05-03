@@ -6,7 +6,7 @@ var router = express.Router();
 
 router.get('/', function(req, res){
     
-   res.send('GET route on things.');
+   res.redirect('/todo');
 });
 
 // route to ge quizzes list

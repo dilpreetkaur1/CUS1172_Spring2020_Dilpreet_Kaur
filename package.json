@@ -2,6 +2,7 @@
   "name": "quiz",
   "version": "1.0.0",
   "engines": {
+    "npm": "6.x",
     "node": "12.16.x"
   },
   "main": "index.js",
